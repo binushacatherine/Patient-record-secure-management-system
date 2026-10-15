@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSecure - Hospital Records</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>✚ CareSecure</h1>
+            <p>Hospital Patient Records System</p>
+        </div>
+        <span class="security-label">🔒 Secure Access</span>
+    </header>
+
+    <main>
+        <section id="loginSection" class="panel login-panel">
+            <h2>Staff Login</h2>
+            <p>Sign in using your authorized role.</p>
+
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input id="username" autocomplete="username"
+                       placeholder="Enter username" required>
+
+                <label for="password">Password</label>
+                <input id="password" type="password"
+                       autocomplete="current-password"
+                       placeholder="Enter password" required>
+
+                <label for="role">Access Role</label>
+                <select id="role">
+                    <option value="doctor">Doctor</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="admin">Administrator</option>
+                </select>
+
+                <button type="submit">Login</button>
+                <p id="loginMessage" role="alert"></p>
+            </form>
+
+            <div class="demo-box">
+                <h3>Demo Accounts</h3>
+                <p>Doctor: doctor1 / Doc123</p>
+                <p>Receptionist: reception1 / Rec123</p>
+                <p>Administrator: admin / Admin123</p>
+                <button type="button" id="fillDemo" class="secondary">
+                    Fill Demo Credentials
+                </button>
+            </div>
+        </section>
+
+        <section id="dashboard" class="hidden">
+            <div class="welcome panel">
+                <div>
+                    <h2 id="welcomeText">Dashboard</h2>
+                    <p id="roleText"></p>
+                </div>
+                <button id="logout" class="logout-btn">Logout</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <span>Total Patients</span>
+                    <strong id="patientCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Activity Events</span>
+                    <strong id="activityCount">0</strong>
+                </div>
+            </div>
+
+            <section id="registerSection" class="panel hidden">
+                <h3>Register New Patient</h3>
+                <form id="patientForm">
+                    <label for="patientName">Patient Name</label>
+                    <input id="patientName" maxlength="80" required>
+
+                    <label for="patientAge">Age</label>
+                    <input id="patientAge" type="number"
+                           min="0" max="120" required>
+
+                    <label for="patientGender">Gender</label>
+                    <select id="patientGender">
+                        <option>Female</option>
+                        <option>Male</option>
+                        <option>Other</option>
+                        <option>Prefer not to say</option>
+                    </select>
+
+                    <label for="patientContact">Contact Number</label>
+                    <input id="patientContact" type="tel"
+                           maxlength="15" required>
+
+                    <button type="submit">Register Patient</button>
+                </form>
+            </section>
+
+            <section id="recordSection" class="panel hidden">
+                <h3>Patient Records</h3>
+                <p id="recordPermission"></p>
+
+                <label for="searchPatient">Search Patient</label>
+                <input id="searchPatient"
+                       placeholder="Search by patient ID or name">
+
+                <div id="patientList" class="record-list"></div>
+            </section>
+
+            <section id="logSection" class="panel hidden">
+                <h3>Activity Audit Log</h3>
+                <p>Review recorded actions and access attempts.</p>
+                <button id="refreshLogs" class="secondary">
+                    Refresh Logs
+                </button>
+                <div id="activityList" class="record-list"></div>
+            </section>
+
+            <p id="dashboardMessage" role="status"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>CareSecure &copy; 2026 | Patient Privacy Matters</p>
+        <small>Educational demonstration only. Do not enter real patient data.</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
